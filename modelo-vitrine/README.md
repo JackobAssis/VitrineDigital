@@ -1,5 +1,3 @@
-# VitrineDigital
-
 # Vitrine Digital Reutilizável
 
 Plataforma moderna e responsiva para comerciantes exibirem seus produtos em uma vitrine online, com painel administrativo para fácil personalização, sem necessidade de programação.

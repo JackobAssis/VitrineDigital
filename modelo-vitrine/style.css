@@ -1,3 +1,109 @@
+/* Painel administrativo harmonizado */
+#login-section, #painel-section {
+  background: #18181f;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22);
+  max-width: 440px;
+  margin: 2rem auto;
+  padding: 2rem 1.2rem;
+  color: #fff;
+}
+.painel-card {
+  background: #18181f;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.22);
+  max-width: 400px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 1.2rem 1.5rem 1.2rem;
+  transition: transform 0.18s, box-shadow 0.18s;
+  position: relative;
+  overflow: hidden;
+  margin: 0 auto 2rem auto;
+}
+.painel-card input, .painel-card input[type="text"], .painel-card input[type="password"] {
+  background: #23232b;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 0.7rem 1rem;
+  font-size: 1rem;
+  margin-bottom: 0.7rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+.painel-card input[type="file"] {
+  background: none;
+  color: #fff;
+  border: none;
+  margin-bottom: 0.5rem;
+  padding: 0;
+  width: auto;
+}
+.painel-card button {
+  background: linear-gradient(90deg, #00C9A7 0%, #3A7DF0 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 1.5rem;
+  font-size: 1.08rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.7rem;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0,201,167,0.10);
+  transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+  outline: none;
+  position: relative;
+  display: inline-block;
+}
+.painel-card button:hover, .painel-card button:focus {
+  background: linear-gradient(90deg, #3A7DF0 0%, #00C9A7 100%);
+  box-shadow: 0 4px 16px rgba(58,125,240,0.18);
+  transform: scale(1.07);
+  filter: brightness(1.12);
+}
+.painel-card img {
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+  margin-bottom: 0.7rem;
+}
+.painel-card input[placeholder="Nome"] {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+.painel-card input[placeholder="Descrição"] {
+  font-size: 1rem;
+  color: #CCCCCC;
+  text-align: center;
+  line-height: 1.5;
+}
+.painel-card input[placeholder="Preço"] {
+  font-weight: 600;
+  color: #00C9A7;
+  font-size: 1.15rem;
+  letter-spacing: 0.5px;
+}
+.painel-card input[placeholder^="URL"] {
+  font-size: 0.98rem;
+  color: #b0b0b0;
+}
+.painel-card input[placeholder*="vídeo"] {
+  color: #3A7DF0;
+}
+.painel-card::-webkit-scrollbar {
+  width: 8px;
+  background: #23232b;
+}
+.painel-card::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 8px;
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 

@@ -8,8 +8,16 @@
 </head>
 <body>
     <header>
+        <div class="loja-info" style="margin-bottom:1rem;">
+            <img id="logo-loja-painel" src="imagens/logo.jpg" alt="Logo da Loja" style="width:80px;height:80px;border-radius:50%;object-fit:cover;box-shadow:0 2px 12px rgba(0,0,0,0.13);background:#222;display:block;margin:0 auto 0.7rem auto;">
+        </div>
         <h1>Painel Administrativo</h1>
         <p>Gerencie sua vitrine digital</p>
+        <div style="margin:1rem auto 0 auto;max-width:300px;text-align:center;">
+            <input type="file" id="input-logo-painel" accept="image/*" style="display:block;margin:0.5rem auto 0.2rem auto;">
+            <input type="text" id="input-logo-url-painel" placeholder="URL da logo ou cole aqui" style="width:90%;margin:0 auto 0.5rem auto;">
+            <button id="btn-logo-painel" style="margin-bottom:0.5rem;">Atualizar Logo</button>
+        </div>
     </header>
     <main>
         <section id="login-section">
@@ -29,5 +37,46 @@
         <p>&copy; 2025 Vitrine Digital</p>
     </footer>
     <script src="painel.js"></script>
+    <script>
+    // Logo da loja - painel
+    const logoEl = document.getElementById('logo-loja-painel');
+    const inputLogo = document.getElementById('input-logo-painel');
+    const inputLogoUrl = document.getElementById('input-logo-url-painel');
+    const btnLogo = document.getElementById('btn-logo-painel');
+
+    // Carregar logo atual
+    fetch('loja.json').then(r=>r.json()).then(loja=>{
+      if(loja.logo) logoEl.src = loja.logo;
+    });
+
+    inputLogo.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          inputLogoUrl.value = ev.target.result;
+          logoEl.src = ev.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    inputLogoUrl.addEventListener('input', function() {
+      if (inputLogoUrl.value.startsWith('data:image') || inputLogoUrl.value.match(/^https?:\/\//)) {
+        logoEl.src = inputLogoUrl.value;
+      }
+    });
+
+    btnLogo.addEventListener('click', function() {
+      // Atualiza logo no localStorage e loja.json (se possível)
+      let loja = {};
+      if (localStorage.getItem('loja')) {
+        try { loja = JSON.parse(localStorage.getItem('loja')); } catch {}
+      }
+      loja.logo = inputLogoUrl.value || logoEl.src;
+      localStorage.setItem('loja', JSON.stringify(loja));
+      alert('Logo atualizada!');
+    });
+    </script>
 </body>
 </html>

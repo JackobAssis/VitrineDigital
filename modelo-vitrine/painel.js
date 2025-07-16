@@ -44,12 +44,63 @@ function renderizarPainel(produtos) {
     div.innerHTML = `
       <input type="text" value="${produto.nome}" placeholder="Nome">
       <input type="text" value="${produto.descricao}" placeholder="Descrição">
-      <input type="text" value="${produto.imagem}" placeholder="URL da Imagem">
+      <div style="margin:0.5rem 0;">
+        <img src="${produto.imagem || ''}" alt="Preview" style="max-width:80px;max-height:80px;display:${produto.imagem ? 'block' : 'none'};margin-bottom:0.3rem;" id="preview-img-${idx}">
+        <input type="file" accept="image/*" style="display:block;margin-bottom:0.3rem;" id="file-img-${idx}">
+        <input type="text" value="${produto.imagem || ''}" placeholder="URL da Imagem ou cole aqui" id="input-img-${idx}" style="width:90%;">
+      </div>
       <input type="text" value="${produto.preco}" placeholder="Preço">
       <input type="text" value="${produto.linkCompra}" placeholder="Link de Compra">
       <button onclick="removerProduto(${idx})">Remover</button>
     `;
     painel.appendChild(div);
+
+    // Upload de arquivo
+    const fileInput = div.querySelector(`#file-img-${idx}`);
+    const urlInput = div.querySelector(`#input-img-${idx}`);
+    const imgPreview = div.querySelector(`#preview-img-${idx}`);
+
+    fileInput.addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(ev) {
+          urlInput.value = ev.target.result;
+          imgPreview.src = ev.target.result;
+          imgPreview.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Colar imagem (clipboard)
+    urlInput.addEventListener('paste', function(e) {
+      const items = (e.clipboardData || window.clipboardData).items;
+      for (let i = 0; i < items.length; i++) {
+        if (items[i].type.indexOf('image') !== -1) {
+          const file = items[i].getAsFile();
+          const reader = new FileReader();
+          reader.onload = function(ev) {
+            urlInput.value = ev.target.result;
+            imgPreview.src = ev.target.result;
+            imgPreview.style.display = 'block';
+          };
+          reader.readAsDataURL(file);
+          e.preventDefault();
+          break;
+        }
+      }
+    });
+
+    // Preview ao digitar URL
+    urlInput.addEventListener('input', function(e) {
+      if (urlInput.value.startsWith('data:image') || urlInput.value.match(/^https?:\/\//)) {
+        imgPreview.src = urlInput.value;
+        imgPreview.style.display = 'block';
+      } else {
+        imgPreview.style.display = 'none';
+      }
+    });
   });
 }
 
@@ -63,7 +114,8 @@ document.getElementById('btn-adicionar').onclick = function() {
   produtos.push({
     nome: '',
     descricao: '',
-    imagem: '',
+    imagens: [], // array de imagens
+    video: '',   // url do vídeo
     preco: '',
     linkCompra: ''
   });
@@ -88,12 +140,13 @@ document.getElementById('btn-salvar').onclick = function() {
   const cards = painel.querySelectorAll('.painel-card');
   const produtos = Array.from(cards).map(card => {
     const inputs = card.querySelectorAll('input');
+    // inputs: [nome, descricao, file, url, preco, linkCompra]
     return {
       nome: inputs[0].value,
       descricao: inputs[1].value,
-      imagem: inputs[2].value,
-      preco: inputs[3].value,
-      linkCompra: inputs[4].value
+      imagem: inputs[3].value, // valor do campo URL/base64
+      preco: inputs[4].value,
+      linkCompra: inputs[5].value
     };
   });
   localStorage.setItem('produtos', JSON.stringify(produtos));
