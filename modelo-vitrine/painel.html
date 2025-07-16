@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Painel Administrativo</h1>
+        <p>Gerencie sua vitrine digital</p>
+    </header>
+    <main>
+        <section id="login-section">
+            <h2>Login</h2>
+            <input type="password" id="senha" placeholder="Digite a senha">
+            <button id="btn-login">Entrar</button>
+            <p id="login-erro" style="color:#ff4c4c;"></p>
+        </section>
+        <section id="painel-section" style="display:none;">
+            <h2>Produtos</h2>
+            <button id="btn-adicionar">Adicionar Produto</button>
+            <div id="painel-produtos"></div>
+            <button id="btn-salvar">Salvar Alterações</button>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 Vitrine Digital</p>
+    </footer>
+    <script src="painel.js"></script>
+</body>
+</html>

@@ -1,0 +1,187 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+body {
+    font-family: 'Poppins', 'Roboto', 'Inter', Arial, sans-serif;
+    margin: 0;
+    background: #121212;
+    color: #fff;
+    min-height: 100vh;
+}
+header {
+    background: #1E1E1E;
+    color: #00C9A7;
+    padding: 2rem 0 1rem 0;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+}
+header h1 {
+    font-size: 2.2rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 0.3rem;
+}
+header p {
+    color: #CCCCCC;
+    font-size: 1.1rem;
+    margin-top: 0;
+}
+.loja-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+#logo-loja {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+    background: #222;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+}
+.produtos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 2.5rem 2vw;
+    justify-items: center;
+}
+.card {
+    background: #1E1E1E;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+    max-width: 370px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1.2rem 1.5rem 1.2rem;
+    transition: transform 0.18s, box-shadow 0.18s;
+    position: relative;
+    overflow: hidden;
+}
+.card:hover {
+    transform: scale(1.035);
+    box-shadow: 0 8px 32px rgba(0,201,167,0.18), 0 4px 24px rgba(58,125,240,0.12);
+}
+.card img {
+    width: 100%;
+    max-width: 260px;
+    border-radius: 16px;
+    margin-bottom: 1.2rem;
+    object-fit: cover;
+    background: #222;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+    display: block;
+}
+.card h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0.5rem 0 0.2rem 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+.card p {
+    font-size: 1rem;
+    color: #CCCCCC;
+    margin: 0.5rem 0 0.7rem 0;
+    text-align: center;
+    line-height: 1.5;
+}
+.card .preco {
+    font-weight: 600;
+    color: #00C9A7;
+    font-size: 1.15rem;
+    margin: 0.5rem 0 0.7rem 0;
+    letter-spacing: 0.5px;
+}
+.card .comprar {
+    background: linear-gradient(90deg, #00C9A7 0%, #3A7DF0 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 1.5rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.7rem;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,201,167,0.10);
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+    display: inline-block;
+    outline: none;
+    position: relative;
+}
+.card .comprar:hover, .card .comprar:focus {
+    background: linear-gradient(90deg, #3A7DF0 0%, #00C9A7 100%);
+    box-shadow: 0 4px 16px rgba(58,125,240,0.18);
+    transform: scale(1.07);
+    filter: brightness(1.12);
+}
+footer {
+    background: #1E1E1E;
+    color: #CCCCCC;
+    text-align: center;
+    padding: 1.2rem 0 1rem 0;
+    font-size: 1rem;
+    margin-top: 2rem;
+    box-shadow: 0 -2px 8px rgba(0,0,0,0.10);
+}
+@media (max-width: 700px) {
+    .produtos-container {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 1.2rem 2vw;
+    }
+    .card {
+        max-width: 98vw;
+        padding: 1.2rem 0.7rem 1rem 0.7rem;
+    }
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
+/* Painel administrativo */
+#login-section, #painel-section {
+    background: #1E1E1E;
+    border-radius: 14px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.13);
+    max-width: 400px;
+    margin: 2rem auto;
+    padding: 2rem 1.2rem;
+    color: #fff;
+}
+input[type="password"] {
+    background: #222;
+    color: #fff;
+    border: 1px solid #00C9A7;
+    border-radius: 6px;
+    padding: 0.7rem 1rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    width: 100%;
+}
+button {
+    background: linear-gradient(90deg, #00C9A7 0%, #3A7DF0 100%);
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 0.85rem 1.5rem;
+    font-size: 1.08rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 0.7rem;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0,201,167,0.10);
+    transition: background 0.18s, box-shadow 0.18s, transform 0.18s;
+    outline: none;
+    position: relative;
+    display: inline-block;
+}
+button:hover, button:focus {
+    background: linear-gradient(90deg, #3A7DF0 0%, #00C9A7 100%);
+    box-shadow: 0 4px 16px rgba(58,125,240,0.18);
+    transform: scale(1.07);
+    filter: brightness(1.12);
+}

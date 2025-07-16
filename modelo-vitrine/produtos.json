@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nome": "Tênis Esportivo",
+    "descricao": "Tênis confortável e resistente, ideal para corridas leves.",
+    "imagem": "imagens/tenis.jpg",
+    "preco": "R$199,90",
+    "linkCompra": "https://shopee.com.br/tenis123"
+  },
+  {
+    "id": 2,
+    "nome": "Bolsa Feminina",
+    "descricao": "Bolsa elegante para todas as ocasiões.",
+    "imagem": "imagens/bolsa.jpg",
+    "preco": "R$149,90",
+    "linkCompra": "https://www.mercadolivre.com.br/bolsa456"
+  },
+  {
+    "id": 3,
+    "nome": "Relógio Digital",
+    "descricao": "Relógio moderno com diversas funções.",
+    "imagem": "imagens/relogio.jpg",
+    "preco": "R$89,90",
+    "linkCompra": "https://wa.me/5511999999999"
+  }
+]
